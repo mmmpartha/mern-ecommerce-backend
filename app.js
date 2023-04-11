@@ -4,6 +4,8 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const path = require("path");
+const cors = require('cors');
+
 
 const errorMiddleware = require("./middleware/error");
 
@@ -36,5 +38,15 @@ app.get("*", (req, res) => {
 
 // Middleware for Errors
 app.use(errorMiddleware);
+const corsOptions = {
+  origin: '*',
+  credentials: true,
+  optionSuccessStatus: 200
+}
+app.use(cors(corsOptions))
+
+app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.set('trust proxy', 1);
 
 module.exports = app;
