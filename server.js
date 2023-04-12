@@ -14,14 +14,6 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({ path: "config.env" });
 }
 
-// Cors
-const cors = require("cors");
-
-app.use("/", require('./routes'));
-app.use(cors({
-  origin: '*'
-}))
-
 // Connecting to database
 connectDatabase();
 
