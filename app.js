@@ -31,6 +31,7 @@ app.use("/api/v1", payment);
 app.use(express.static(path.join(__dirname, "https://ecommerce-mern-boa3.onrender.com/build")));
 
 app.get("*", (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.sendFile(path.resolve(__dirname, "https://ecommerce-mern-boa3.onrender.com/build/index.html"));
 });
 
