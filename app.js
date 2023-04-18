@@ -28,12 +28,13 @@ app.use("/api/v1", user);
 app.use("/api/v1", order);
 app.use("/api/v1", payment);
 
-app.use(express.static(path.join(__dirname, "https://ecommerce-mern-boa3.onrender.com/public")));
+app.use(express.static(path.join(__dirname, "frontend", "build")));
 
 app.get("*", (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.sendFile(path.resolve(__dirname, "https://ecommerce-mern-boa3.onrender.com/public/index.html"));
+  res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
 });
+
 
 // Middleware for Errors
 app.use(errorMiddleware);
